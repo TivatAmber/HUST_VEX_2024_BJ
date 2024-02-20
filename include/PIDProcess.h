@@ -1,11 +1,12 @@
 #ifndef PIDPROCESS_H_
 #define PIDPROCESS_H_
 
-static const int MaxTimeMsec = 6000;
+static const int DefaultMaxTimeMsec = 6000;
 
-void PIDStraightFast(float target);
-void PIDStraightSlow(float target);
-void PIDStraight(float target);
-void PIDRotate(float deg);
+void PIDStraightMostFast(float target, int MaxTimeMsec = DefaultMaxTimeMsec);
+void PIDStraightFast(float target, int MaxTimeMsec = DefaultMaxTimeMsec);
+void PIDStraightSlow(float target, int MaxTimeMsec = DefaultMaxTimeMsec);
+void PIDStraight(float target, int MaxTimeMsec = DefaultMaxTimeMsec);
+void PIDRotate(float deg, int MaxTimeMsec = DefaultMaxTimeMsec);
 
 #endif
