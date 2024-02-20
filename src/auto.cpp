@@ -12,7 +12,7 @@ void autonomous_task(){
     wait(200, msec);
     PIDRotate(180);
     wait(200, msec);
-    PIDStraightSlow(720);
+    PIDStraightMostFast(720);
     wait(200, msec);
     PIDRotate(180);
 
