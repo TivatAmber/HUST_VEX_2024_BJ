@@ -32,7 +32,7 @@ void PIDStraightFast(float target) {
         float now = Rotate.position(rotationUnits::deg);
         pidRot.update(now);
         float delta = pidRot.getOutput();
-        delta = fmin(fabs(delta), 100) * sign(delta) * 0.6;
+        delta = fmin(fabs(delta), 100) * sign(delta) * 0.8;
 
         chassis.Move_forward(delta);
         printf("%f\n", now);
@@ -70,7 +70,7 @@ void PIDStraightSlow(float target) {
         float now = Rotate.position(rotationUnits::deg);
         pidRot.update(now);
         float delta = pidRot.getOutput();
-        delta = fmin(fabs(delta), 100) * sign(delta) * 0.4;
+        delta = fmin(fabs(delta), 100) * sign(delta) * 0.5;
 
         chassis.Move_forward(delta);
         printf("%f\n", now);
