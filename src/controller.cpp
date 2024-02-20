@@ -8,6 +8,7 @@
 #include "controller.h"
 #include "robot-config.h"
 #include "chassis.h"
+#include "collector.h"
 #include <math.h>
 #include <thread>
 
@@ -24,6 +25,9 @@ void controller_task(){
     {chassis.Move_free(Controller.Axis3.position()*speed_ratio,Controller.Axis1.position()*speed_ratio);}
     else if(chassis.stop_Monitor()){chassis.Move_stop();}
     chassis.Move();
+    if(Controller.ButtonL2.PRESSED){collector1.Spin();}
+    if(Controller.ButtonR1.PRESSED){collector1.raise();}
+    if(Controller.ButtonR2.PRESSED){collector1.lower();}
 }
 
 void My_Controller(){

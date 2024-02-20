@@ -28,7 +28,11 @@ motor_group Motor_BaseLB = motor_group(Motor_BaseLB1, Motor_BaseLB2);
 motor_group Motor_BaseRF = motor_group(Motor_BaseRF1, Motor_BaseRF2);
 motor_group Motor_BaseRB = motor_group(Motor_BaseRB1, Motor_BaseRB2);
 
-Chassis chassis;                                        
+motor Collector_raise = motor(PORT12, ratio18_1, true);
+motor Collector_spin = motor(PORT11, ratio18_1, false);
+
+Chassis chassis;
+Collector collector1;                                        
 rotation Rotate = rotation(PORT5, false);
 controller Controller = controller(primary);
 
