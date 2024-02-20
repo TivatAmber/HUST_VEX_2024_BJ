@@ -9,7 +9,7 @@ void PIDStraight(float target) {
     static PID pidRot;
     static bool used = false;
 
-    printf("PIDSt`aright %f\n", target);
+    printf("PIDStaright %f\n", target);
 
     if (false == used) {
         pidRot.setCoefficient(0.5, 0.5, 6);
