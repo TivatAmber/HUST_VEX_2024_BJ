@@ -5,14 +5,13 @@
 class MyTimer
 {
 private:
-    double startTime;
+    int time;
 
 public:
     MyTimer();
-    MyTimer(double);
     void reset();
+    void click();
     int getTime() const;
-    double getTimeDouble() const;
 };
 
 #endif

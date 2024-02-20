@@ -1,22 +1,19 @@
 #include "my-timer.h"
 #include "vex.h"
 
-MyTimer::MyTimer()
-{
-    startTime = Brain.Timer.value();
-}
+MyTimer::MyTimer():time(int(0)) {}
 
 void MyTimer::reset()
 {
-    startTime = Brain.Timer.value();
+    time = 0;
 }
 
 int MyTimer::getTime() const
 {
-    return floor((Brain.Timer.value() - startTime) * 1000); // return time (msec) from startTime
+    return time;
 }
 
-double MyTimer::getTimeDouble() const
+void MyTimer::click()
 {
-    return Brain.Timer.value() - startTime; // return time (sec) from startTime
+    time += 10;
 }

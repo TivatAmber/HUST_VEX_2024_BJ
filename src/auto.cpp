@@ -4,15 +4,19 @@
 #include "PID.h"
 #include "tools.h"
 #include "math.h"
+#include "my-timer.h"
 
-void PIDStraight(float target) {
+static const int MaxTimeMsec = 5000;
+
+void PIDStraightFast(float target) {
     static PID pidRot;
     static bool used = false;
+    static MyTimer timer;
 
     printf("PIDStaright %f\n", target);
 
     if (false == used) {
-        pidRot.setCoefficient(0.5, 0.5, 6);
+        pidRot.setCoefficient(0.6, 0.5, 6);
         pidRot.setDTolerance(0.5);
         pidRot.setErrorTolerance(1);
         used = true;
@@ -20,13 +24,15 @@ void PIDStraight(float target) {
 
     pidRot.setTarget(target);
     pidRot.refresh();
+    timer.reset();
 
     Rotate.resetPosition();
+    
     while (true) {
         float now = Rotate.position(rotationUnits::deg);
         pidRot.update(now);
         float delta = pidRot.getOutput();
-        delta = fmin(fabs(delta), 100) * sign(delta) * 0.5;
+        delta = fmin(fabs(delta), 100) * sign(delta) * 0.6;
 
         chassis.Move_forward(delta);
         printf("%f\n", now);
@@ -36,6 +42,46 @@ void PIDStraight(float target) {
         }
         chassis.Move();
         wait(10, msec);
+        timer.click();
+        if (timer.getTime() > MaxTimeMsec) break;
+    }
+}
+
+void PIDStraightSlow(float target) {
+    static PID pidRot;
+    static bool used = false;
+    static MyTimer timer;
+
+    printf("PIDStaright %f\n", target);
+
+    if (false == used) {
+        pidRot.setCoefficient(0.4, 0.4, 6);
+        pidRot.setDTolerance(0.5);
+        pidRot.setErrorTolerance(1);
+        used = true;
+    }
+
+    pidRot.setTarget(target);
+    pidRot.refresh();
+    timer.reset();
+
+    Rotate.resetPosition();
+    while (true) {
+        float now = Rotate.position(rotationUnits::deg);
+        pidRot.update(now);
+        float delta = pidRot.getOutput();
+        delta = fmin(fabs(delta), 100) * sign(delta) * 0.4;
+
+        chassis.Move_forward(delta);
+        printf("%f\n", now);
+        if (pidRot.targetArrived()) {
+            chassis.chassis_stop();
+            break;
+        }
+        chassis.Move();
+        wait(10, msec);
+        timer.click();
+        if (timer.getTime() > MaxTimeMsec) break;
     }
 }
 
@@ -44,6 +90,7 @@ void PIDStraight(float target) {
 void PIDRotate(float deg) {
     static PID pidRot;
     static bool used = false;
+    static MyTimer timer;
 
     printf("PIDRotate %f\n", deg);
     
@@ -55,6 +102,7 @@ void PIDRotate(float deg) {
 
     pidRot.setTarget(deg);
     pidRot.refresh();
+    timer.reset();
 
     Inertial.resetRotation();
     while (true) {
@@ -71,6 +119,8 @@ void PIDRotate(float deg) {
         }
         chassis.Move();
         wait(10, msec);
+        timer.click();
+        if (timer.getTime() > MaxTimeMsec) break;
     }
 }
 
@@ -78,11 +128,11 @@ void autonomous_task(){
     Rotate.resetPosition();
     printf("Start\n");
 
-    PIDStraight(720);
+    PIDStraightFast(720);
     wait(200, msec);
     PIDRotate(180);
     wait(200, msec);
-    PIDStraight(720);
+    PIDStraightSlow(720);
     wait(200, msec);
     PIDRotate(180);
 
