@@ -26,6 +26,12 @@ extern controller Controller;
 extern Chassis chassis;
 extern rotation Rotate;
 
+extern digital_out DigitalRight;
+extern digital_out DigitalLeft;
+
+extern motor Right_Give;
+extern motor Left_Give;
+
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
