@@ -1,3 +1,5 @@
+#ifndef PID_H_
+#define PID_H_
 class PID {
 protected:
     float errorCurt, errorPrev, errorDev, errorInt;
@@ -23,3 +25,5 @@ public:
     bool targetArrived();
     void setCoefficient(float kp, float ki, float kd);
 };
+
+#endif
