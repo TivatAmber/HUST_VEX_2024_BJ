@@ -85,6 +85,10 @@ void PIDStraightSlow(float target) {
     }
 }
 
+void PIDStraight(float target) {
+    PIDStraightFast(target);
+}
+
 /// @brief Positive Right - Negetive Left
 /// @param deg 
 void PIDRotate(float deg) {
