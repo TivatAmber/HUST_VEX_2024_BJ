@@ -11,7 +11,7 @@ using namespace vex;
 brain Brain;
 
 // VEXcode device constructors
-inertial Inertial = inertial(PORT10);
+inertial Inertial = inertial(PORT11);
 
 motor Motor_BaseLF = motor(PORT1, ratio18_1, true);
 motor Motor_BaseLB = motor(PORT2, ratio18_1, true);

@@ -155,7 +155,7 @@ void PIDRotateSlow(float deg, int MaxTimeMsec) {
         float now = Inertial.rotation(rotationUnits::deg);
         pidRot.update(now);
         float delta = pidRot.getOutput();
-        delta = fmin(fabs(delta), 100) * sign(delta) * 0.25;
+        delta = fmin(fabs(delta), 100) * sign(delta) * 0.2;
 
         chassis.Move_free(0, delta);
         if (timer.getTime() % OutputDeltaTime == 0) printf("%f\n", now);
