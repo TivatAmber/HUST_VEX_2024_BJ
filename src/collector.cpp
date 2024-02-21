@@ -5,15 +5,18 @@ Collector::Collector()
 {
     Collector_raise.setStopping(brakeType::brake);
     Collector_spin.setStopping(brakeType::brake);
-    Collector_raise.setVelocity(30, velocityUnits::pct);
-    Collector_spin.setVelocity(50, velocityUnits::pct);
+    Collector_raise.setVelocity(25, velocityUnits::pct);
+    Collector_spin.setVelocity(55, velocityUnits::pct);
+    Collector_raise.setPosition(0, degrees);
+    Collector_spin.setPosition(0, degrees);
+    Collector_raise.setTimeout(3, timeUnits::sec);
 }
 
 void Collector::lower()
 {
     if (state_height == state1::up)
     {
-        Collector_raise.spinFor(forward, 135 , degrees); 
+        Collector_raise.spinFor(forward, 155 , degrees); 
         state_height = state1::down;
     }
 }
@@ -22,7 +25,7 @@ void Collector::raise()
 {
     if (state_height == state1::down)
     {
-        Collector_raise.spinFor(reverse, 135 , degrees); 
+        Collector_raise.spinFor(reverse, 155, degrees); 
         state_height = state1::up;
     }
 }

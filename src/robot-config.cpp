@@ -17,7 +17,7 @@ motor Motor_BaseLF1 = motor(PORT1, ratio18_1, true);
 motor Motor_BaseLB1 = motor(PORT3, ratio18_1, true);
 motor Motor_BaseRF1 = motor(PORT5, ratio18_1, false);
 motor Motor_BaseRB1 = motor(PORT7, ratio18_1, false);
-motor Motor_BaseLF2 = motor(PORT2, ratio18_1, true);
+motor Motor_BaseLF2 = motor(PORT10, ratio18_1, true);
 motor Motor_BaseLB2 = motor(PORT4, ratio18_1, true);
 motor Motor_BaseRF2 = motor(PORT6, ratio18_1, false);
 motor Motor_BaseRB2 = motor(PORT8, ratio18_1, false);
@@ -55,4 +55,6 @@ void vexcodeInit(void){
     while (Inertial.isCalibrating());
     std::cout << "calibrated2!" << std::endl;
     this_thread::sleep_for(3000);
+    Controller.Screen.print("GO!");
+    Controller.Screen.newLine();
 }

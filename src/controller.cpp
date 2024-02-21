@@ -14,14 +14,14 @@
 
 using namespace vex;
 float speed_ratio = 0.6;//·ÀÖ¹Ò¡¸Ð¹ýÓÚÁéÃô
-double speed = 30.0;
+double speed = 50.0;
 
 void controller_task(){
     if(Controller.ButtonUp.pressing()){chassis.Move_forward(speed);}
     else if(Controller.ButtonDown.pressing()){chassis.Move_backward(speed);}
     else if(Controller.ButtonLeft.pressing()){chassis.Move_left(speed);}
     else if(Controller.ButtonRight.pressing()){chassis.Move_right(speed);}
-    else if(Controller.Axis1.position()!=0 || Controller.Axis3.position()!=0)
+    else if(abs(Controller.Axis1.position())>=5 || abs(Controller.Axis3.position())>=5)
     {chassis.Move_free(Controller.Axis3.position()*speed_ratio,Controller.Axis1.position()*speed_ratio);}
     else if(chassis.stop_Monitor()){chassis.Move_stop();}
     chassis.Move();
