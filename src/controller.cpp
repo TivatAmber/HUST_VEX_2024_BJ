@@ -22,7 +22,34 @@ void controller_task(){
     chassis.Move();
 }
 
+void Ballstop()
+{
+    Right_Give.stop();
+    Left_Give.stop();
+
+}
+
+void Ballin() 
+{
+    Right_Give.spin(reverse,100,pct);
+    Left_Give.spin(forward,100,pct);   
+}
+
+
+void Ballout()
+{
+    Right_Give.spin(forward,100,pct);
+    Left_Give.spin(reverse,100,pct);
+} 
+
 void My_Controller(){
+    Controller.ButtonX.pressed(Ballin);
+    Controller.ButtonB.pressed(Ballout);
+    Controller.ButtonA.pressed(Ballstop);
+    if(Controller.ButtonR1.pressing()) DigitalRight.set(true);
+    if(Controller.ButtonR2.pressing()) DigitalRight.set(false);
+    if(Controller.ButtonL1.pressing()) DigitalLeft.set(true);
+    if(Controller.ButtonL2.pressing()) DigitalLeft.set(false);
     while (true)
     {
         controller_task();

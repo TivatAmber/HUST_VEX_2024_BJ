@@ -11,8 +11,8 @@ Chassis::Chassis()
     // circle = 0;
     Motor_BaseLF.setStopping(brakeType::coast);    
     Motor_BaseLB.setStopping(brakeType::coast);
-    Motor_BaseRF.setStopping(brakeType::hold);
-    Motor_BaseRB.setStopping(brakeType::hold); 
+    Motor_BaseRF.setStopping(brakeType::coast);
+    Motor_BaseRB.setStopping(brakeType::coast); 
 }
 void Chassis::Move()
 {

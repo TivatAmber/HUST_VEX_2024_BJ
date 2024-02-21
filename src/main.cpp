@@ -16,7 +16,6 @@ using namespace vex;
 
 void count_task()
 {
-  printf("1");
     while (true)
     {
         // chassis.count_circle();
@@ -25,19 +24,16 @@ void count_task()
 }
 
 int main() {
-  // Initializing Robot Configuration. DO NOT REMOVE!
-  vexcodeInit();
-  #ifdef TO_AUTO
-  // Rotate.changed(count_task);
-  autonomous_task();
-  #endif
-  Motor_BaseRF.setStopping(brakeType::coast);
-  Motor_BaseRB.setStopping(brakeType::coast); 
-  thread controller_thread(My_Controller);
-  chassis.Move_forward(0);
-  while (true)
-  {
-    this_thread::sleep_for(10);
-  }
-  
+    // Initializing Robot Configuration. DO NOT REMOVE!
+    vexcodeInit();
+    #ifdef TO_AUTO
+    // Rotate.changed(count_task);
+    autonomous_task();
+    #endif
+    // thread controller_thread(My_Controller);
+    // chassis.Move_forward(0);
+    while (true)
+    {
+        this_thread::sleep_for(10);
+    }
 }

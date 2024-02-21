@@ -23,6 +23,12 @@ Chassis chassis;
 rotation Rotate = rotation(PORT9, false);
 controller Controller = controller(primary);
 
+digital_out DigitalRight = digital_out(Brain.ThreeWirePort.F);
+digital_out DigitalLeft = digital_out(Brain.ThreeWirePort.E);
+
+motor Right_Give = motor(PORT10, ratio18_1, false);
+motor Left_Give = motor(PORT3, ratio18_1, false);
+
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
@@ -41,5 +47,5 @@ void vexcodeInit(void){
     std::cout << "calibrated!" << std::endl;
     while (Inertial.isCalibrating());
     std::cout << "calibrated2!" << std::endl;
-    this_thread::sleep_for(3000);
+    this_thread::sleep_for(1000);
 }

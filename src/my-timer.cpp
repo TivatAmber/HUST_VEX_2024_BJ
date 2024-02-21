@@ -15,5 +15,5 @@ int MyTimer::getTime() const
 
 void MyTimer::click()
 {
-    time += 10;
+    time += 5;
 }
