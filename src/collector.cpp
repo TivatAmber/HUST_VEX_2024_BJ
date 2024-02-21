@@ -3,7 +3,7 @@
 
 Collector::Collector()
 {
-    Collector_raise.setStopping(brakeType::hold);
+    Collector_raise.setStopping(brakeType::brake);
     Collector_spin.setStopping(brakeType::brake);
     Collector_raise.setVelocity(30, velocityUnits::pct);
     Collector_spin.setVelocity(50, velocityUnits::pct);
