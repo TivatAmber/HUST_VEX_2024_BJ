@@ -44,19 +44,9 @@ void Chassis::Move_left(double speed)
 }
 void Chassis::Move_free(double x, double y)
 {
-    if (fabs(x)>=55)
-    {
-        x = x *1.6;
-        Motor_speed[0] = x + y;Motor_speed[1] = x + y;
-        Motor_speed[2] = x - y;Motor_speed[3] = x - y;
-    }
-    else
-    {
-        Motor_speed[0] = x + y;Motor_speed[1] = x + y;
-        Motor_speed[2] = x - y;Motor_speed[3] = x - y;
-    }
-    Controller.Screen.print("speed:%f",Motor_speed[0]);
-    Controller.Screen.newLine();
+    Motor_speed[0] = x + y;Motor_speed[1] = x + y;
+    Motor_speed[2] = x - y;Motor_speed[3] = x - y;
+
 }
 
 void Chassis::Move_stop()
