@@ -5,7 +5,7 @@
 #include "tools.h"
 #include "PIDProcess.h"
 
-#define DEBUG
+#define DEBU
 #define WAY2
 
 //1000deg~164.5cm
@@ -21,13 +21,13 @@ void autonomous_task(){
     Controller.ButtonA.pressed(DebugEnd);
     #endif
 
-    // for (int i = 0; i < 5; i++) {
-    //     printf("%d\n", i + 1);
-    //     air_cylinder_folder.set(true);
-    //     wait(1000, msec);
-    //     air_cylinder_folder.set(false);
-    //     wait(3000, msec);
-    // }
+    for (int i = 0; i < 5; i++) {
+        printf("%d\n", i + 1);
+        air_cylinder_folder.set(true);
+        wait(1000, msec);
+        air_cylinder_folder.set(false);
+        wait(3000, msec);
+    }
 
     PIDStraight(340);
     wait(300, msec);

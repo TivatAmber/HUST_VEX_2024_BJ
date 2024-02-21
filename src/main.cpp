@@ -10,7 +10,7 @@
 #include "robot-config.h"
 #include "vex.h"
 #include "auto.h"
-#define TO_AUTO     //定义TO_AUTO则进入自动模式
+#define TO_AUT     //定义TO_AUTO则进入自动模式
 
 using namespace vex;
 
