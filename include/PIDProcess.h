@@ -1,7 +1,7 @@
 #ifndef PIDPROCESS_H_
 #define PIDPROCESS_H_
 
-static const int DefaultMaxTimeMsec = 6000;
+static const int DefaultMaxTimeMsec = 4000;
 static const int OutputDeltaTime = 100;
 
 void PIDStraightMostFast(float target, int MaxTimeMsec = DefaultMaxTimeMsec);

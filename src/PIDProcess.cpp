@@ -15,7 +15,7 @@ void PIDStraightFast(float target, int MaxTimeMsec) {
     printf("PIDStaright %f\n", target);
 
     if (false == used) {
-        pidRot.setCoefficient(0.5, 0.5, 10);
+        pidRot.setCoefficient(0.3, 0.5, 2);
         pidRot.setDTolerance(0.5);
         pidRot.setErrorTolerance(1);
         used = true;
@@ -54,9 +54,11 @@ void PIDStraightMostFast(float target, int MaxTimeMsec) {
     printf("PIDStaright %f\n", target);
 
     if (false == used) {
-        pidRot.setCoefficient(0.6, 0.5, 8);
-        pidRot.setDTolerance(0.5);
-        pidRot.setErrorTolerance(1);
+        pidRot.setCoefficient(2.2, 1, 0);
+        pidRot.setDTolerance(1);
+        pidRot.setErrorTolerance(3);
+        pidRot.setIMax(20);
+        pidRot.setIRange(10);
         used = true;
     }
 
@@ -94,7 +96,7 @@ void PIDStraightSlow(float target, int MaxTimeMsec) {
     printf("PIDStaright %f\n", target);
 
     if (false == used) {
-        pidRot.setCoefficient(0.4, 0.4, 10);
+        pidRot.setCoefficient(0.25, 0.4, 1);
         pidRot.setDTolerance(0.5);
         pidRot.setErrorTolerance(1);
         used = true;
@@ -138,9 +140,11 @@ void PIDRotateSlow(float deg, int MaxTimeMsec) {
     printf("PIDRotate %f\n", deg);
     
     if (false == used) {
-        pidRot.setCoefficient(0.3, 0.3, 10);
+        pidRot.setCoefficient(0.88, 1, 0);
         pidRot.setDTolerance(0.5);
         pidRot.setErrorTolerance(1);
+        pidRot.setIMax(7);
+        pidRot.setIRange(10);
     }
 
     pidRot.setTarget(deg);
@@ -177,7 +181,7 @@ void PIDRotateFast(float deg, int MaxTimeMsec) {
     printf("PIDRotate %f\n", deg);
     
     if (false == used) {
-        pidRot.setCoefficient(0.4, 6, 12);
+        pidRot.setCoefficient(2, 0.2, 8);
         pidRot.setDTolerance(2);
         pidRot.setErrorTolerance(5);
     }
