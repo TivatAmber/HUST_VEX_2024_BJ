@@ -17,9 +17,7 @@ float speed_ratio = 0.6;//·ÀÖ¹Ò¡¸Ð¹ýÓÚÁéÃô
 double speed = 50.0;
 
 void controller_task(){
-    if(Controller.ButtonUp.pressing()){chassis.Move_forward(speed);}
-    else if(Controller.ButtonDown.pressing()){chassis.Move_backward(speed);}
-    else if(Controller.ButtonLeft.pressing()){chassis.Move_left(speed);}
+    if(Controller.ButtonLeft.pressing()){chassis.Move_left(speed);}
     else if(Controller.ButtonRight.pressing()){chassis.Move_right(speed);}
     else if(abs(Controller.Axis1.position())>=5 || abs(Controller.Axis3.position())>=5)
     {chassis.Move_free(Controller.Axis3.position()*speed_ratio,Controller.Axis1.position()*speed_ratio);}
@@ -31,9 +29,23 @@ void controller_task(){
 }
 
 void My_Controller(){
+    Controller.ButtonUp.pressed(My_xuan_gua);
+    Controller.ButtonUp.released(My_xuan_gua_stop);
+    Controller.ButtonDown.pressed(My_dont_xuan_gua);
+    Controller.ButtonDown.released(My_xuan_gua_stop);
     while (true)
     {
         controller_task();
         this_thread::sleep_for(10);
     }
+}
+
+void My_xuan_gua(){
+    xuan_gua.spin(forward);
+}
+void My_dont_xuan_gua(){
+    xuan_gua.spin(reverse);
+}
+void My_xuan_gua_stop(){
+    xuan_gua.stop();
 }

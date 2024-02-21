@@ -22,6 +22,7 @@ extern motor Motor_BaseRF1;extern motor Motor_BaseRF2;
 extern motor Motor_BaseRB1;extern motor Motor_BaseRB2;
 extern motor Collector_raise;
 extern motor Collector_spin;
+extern motor xuan_gua;
 
 
 extern controller Controller;

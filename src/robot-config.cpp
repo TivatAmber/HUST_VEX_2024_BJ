@@ -30,6 +30,7 @@ motor_group Motor_BaseRB = motor_group(Motor_BaseRB1, Motor_BaseRB2);
 
 motor Collector_raise = motor(PORT12, ratio18_1, true);
 motor Collector_spin = motor(PORT11, ratio18_1, false);
+motor xuan_gua = motor(PORT9, ratio18_1, false);
 
 Chassis chassis;
 Collector collector1;                                        
@@ -57,4 +58,6 @@ void vexcodeInit(void){
     this_thread::sleep_for(3000);
     Controller.Screen.print("GO!");
     Controller.Screen.newLine();
+    xuan_gua.setVelocity(50, percent);
+    xuan_gua.setStopping(hold);
 }
