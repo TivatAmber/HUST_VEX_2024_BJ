@@ -10,7 +10,7 @@
 #include "robot-config.h"
 #include "vex.h"
 #include "auto.h"
-#define TO_AUTO
+#define TO_AUT
 
 using namespace vex;
 
@@ -30,8 +30,8 @@ int main() {
     // Rotate.changed(count_task);
     autonomous_task();
     #endif
-    // thread controller_thread(My_Controller);
-    // chassis.Move_forward(0);
+    thread controller_thread(My_Controller);
+    chassis.Move_forward(0);
     while (true)
     {
         this_thread::sleep_for(10);

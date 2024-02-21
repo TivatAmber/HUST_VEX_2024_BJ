@@ -6,5 +6,8 @@
 
 void controller_task();
 void My_Controller();
+void Ballin();
+void Ballstop();
+void Ballout();
 
 #endif

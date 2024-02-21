@@ -2,29 +2,47 @@
 #include "stdio.h"
 #include "vex.h"
 #include "auto.h"
-#include"robot-config.h"
+#include "robot-config.h"
+#include "controller.h"
+#include "tools.h"
 
 void autonomous_task(){
     Rotate.resetPosition();
     printf("Start\n");
 
-    Right_Give.spin(reverse,100,pct);//ballin
-    Left_Give.spin(forward,100,pct);
-    PIDStraightFast(1238);//(1)1080 51.5cm  58.5
+
+    
+    Ballin();
+    PIDStraightFast(1200);//(1)1080 51.5cm  58.5
+    // Ballstop();
+
     wait(500,msec );
     PIDRotate(-45);//(a)
     wait(500,msec );
-    DigitalRight.set(true);
-    PIDStraightSlow(307);//(2)14.5
+
+    // DigitalRight.set(true);
+    // Open Wings
+    int ang = 170;
+    thread OpenWings(distanceOpenWings, &ang);
+
+    PIDStraight(327);//(2)14.5
     wait(500,msec );
+
     PIDRotate(-45);//(b)
     wait(500,msec );
-    PIDStraightSlow(251);//(3)13
-    wait(500,msec );
+    
+    Ballout();
     DigitalRight.set(false);
+    wait(200, msec);
+    PIDStraight(451);//(3)13
+    PIDStraight(-180);
+
+    wait(500,msec);
+    Ballstop();
+
     PIDRotate(-90);//(c)
     wait(500,msec );
-    PIDStraight(355);//(4)17
+    PIDStraight(375);//(4)17
     wait(500,msec );
     PIDRotate(90);//(d)
     wait(500,msec );
@@ -39,14 +57,15 @@ void autonomous_task(){
     PIDRotate(-90);//(f)
     wait(500,msec );
     DigitalRight.set(true);
+    Ballin();
     PIDStraight(304);//(8)14.5
     PIDRotate(90);//(g)
-    PIDStraight(293);//(9)14
+    PIDStraight(350);//(9)14
+    Ballout();
+    wait(1000, msec);
     DigitalRight.set(false);
     Right_Give.stop();//ballstop;
     Left_Give.stop();
-
-
 
     printf("End\n");
 }
