@@ -5,41 +5,24 @@ using namespace vex;
 
 Chassis::Chassis()
 {
-    Motor_speed[0] = 0;Motor_speed[1] = 0;
-    Motor_speed[2] = 0;Motor_speed[3] = 0;
+    Motor_speed[0] = Motor_speed[1] = 0;
     // angle[0] = 0;angle[1] = 0;angle[2] = 0;
     // circle = 0;
-    Motor_BaseLF.setStopping(brakeType::coast);    
-    Motor_BaseLB.setStopping(brakeType::coast);
-    Motor_BaseRF.setStopping(brakeType::coast);
-    Motor_BaseRB.setStopping(brakeType::coast); 
+    GroupL.setStopping(coast);
+    GroupR.setStopping(coast);
 }
 void Chassis::Move()
 {
-    Motor_BaseLF.spin(forward, Motor_speed[0], percent);
-    Motor_BaseLB.spin(forward, Motor_speed[1], percent);
-    Motor_BaseRF.spin(forward, Motor_speed[2], percent);
-    Motor_BaseRB.spin(forward, Motor_speed[3], percent);
+    GroupL.spin(forward, Motor_speed[0], percent);
+    GroupR.spin(forward, Motor_speed[1], percent);
 }
 void Chassis::Move_forward(double speed)
 {
-    Motor_speed[0] = speed;Motor_speed[1] = speed;
-    Motor_speed[2] = speed;Motor_speed[3] = speed;
+    Motor_speed[0] = Motor_speed[1] = speed;
 }
 void Chassis::Move_backward(double speed)
 {
-    Motor_speed[0] = -speed;Motor_speed[1] = -speed;
-    Motor_speed[2] = -speed;Motor_speed[3] = -speed;
-}
-void Chassis::Move_right(double speed)
-{
-    Motor_speed[0] = speed;Motor_speed[1] = -speed;
-    Motor_speed[2] = -speed;Motor_speed[3] = speed;
-}
-void Chassis::Move_left(double speed)
-{
-    Motor_speed[0] = -speed;Motor_speed[1] = speed;
-    Motor_speed[2] = speed;Motor_speed[3] = -speed;
+    Motor_speed[0] = Motor_speed[1] = -speed;
 }
 
 /// @brief x is 0, y is not 0, then rotate.
@@ -47,14 +30,13 @@ void Chassis::Move_left(double speed)
 /// @param y 
 void Chassis::Move_free(double x, double y)
 {
-    Motor_speed[0] = x + y;Motor_speed[1] = x - y;
-    Motor_speed[2] = x + y;Motor_speed[3] = x - y;
+    Motor_speed[0] = x + y;
+    Motor_speed[1] = x - y;
 }
 
 void Chassis::Move_stop()
 {
-    Motor_speed[0] = 0;Motor_speed[1] = 0;
-    Motor_speed[2] = 0;Motor_speed[3] = 0;
+    Motor_speed[0] = Motor_speed[1] = 0;
 }
 int Chassis::stop_Monitor()
 {

@@ -151,7 +151,6 @@ void PIDRotateSlow(float deg, int MaxTimeMsec) {
     pidRot.refresh();
     timer.reset();
 
-    Inertial.resetRotation();
     while (true) {
         float now = Inertial.rotation(rotationUnits::deg);
         pidRot.update(now);
@@ -190,7 +189,6 @@ void PIDRotateFast(float deg, int MaxTimeMsec) {
     pidRot.refresh();
     timer.reset();
 
-    Inertial.resetRotation();
     while (true) {
         float now = Inertial.rotation(rotationUnits::deg);
         pidRot.update(now);

@@ -10,7 +10,7 @@
 #include "robot-config.h"
 #include "vex.h"
 #include "auto.h"
-#define TO_AUT
+#define TO_AUTO
 
 using namespace vex;
 
@@ -27,7 +27,7 @@ int main() {
     // Initializing Robot Configuration. DO NOT REMOVE!
     vexcodeInit();
     #ifdef TO_AUTO
-    // Rotate.changed(count_task);
+    Rotate.changed(count_task);
     autonomous_task();
     #endif
     thread controller_thread(My_Controller);

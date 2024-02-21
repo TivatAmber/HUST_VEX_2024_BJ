@@ -5,7 +5,7 @@
 class Chassis
 {
 private:
-    double Motor_speed[4];//LF、LB、RF、RB,值为百分比
+    double Motor_speed[2];//GroupL, GroupR值为百分比
     // int angle[3];// 记录底盘轮子旋转的角度
 public:
     // int circle;//记录底盘旋转的圈数
