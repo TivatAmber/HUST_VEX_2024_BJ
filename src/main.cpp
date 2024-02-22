@@ -10,22 +10,30 @@
 #include "robot-config.h"
 #include "vex.h"
 #include "auto.h"
-#define TO_AUT     //定义TO_AUTO则进入自动模式
+// #define TO_AUT     //定义TO_AUTO则进入自动模式
 
 using namespace vex;
 
+competition Competition;
 
-
-int main() {
-  // Initializing Robot Configuration. DO NOT REMOVE!
-  vexcodeInit();
-  #ifdef TO_AUTO
-  autonomous_task();
-  #endif
+void user_control() {
   thread controller_thread(My_Controller);
   while (true)
   {
     this_thread::sleep_for(10);
   }
+}
+
+int main() {
+  // Initializing Robot Configuration. DO NOT REMOVE!
+  #ifdef TO_AUTO
+  autonomous_task();
+  #endif
+  Competition.autonomous(autonomous_task);
+  Competition.drivercontrol(user_control);
+  vexcodeInit();
   
+  while (true) {
+    wait(100, msec);
+  }
 }
