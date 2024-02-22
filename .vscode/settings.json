@@ -65,6 +65,7 @@
 		"*.embeddedhtml": "html",
 		"iostream": "cpp",
 		"chrono": "cpp",
-		"limits": "cpp"
+		"limits": "cpp",
+		"thread": "cpp"
 	}
 }

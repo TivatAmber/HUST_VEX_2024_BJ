@@ -42,7 +42,10 @@ void PIDStraightFast(float target, int MaxTimeMsec) {
         chassis.Move();
         wait(5, msec);
         timer.click();
-        if (timer.getTime() > MaxTimeMsec) break;
+        if (timer.getTime() > MaxTimeMsec) {
+            printf("Timeout Straight Fast");
+            break;
+        }
     }
 }
 
@@ -83,7 +86,10 @@ void PIDStraightMostFast(float target, int MaxTimeMsec) {
         chassis.Move();
         wait(5, msec);
         timer.click();
-        if (timer.getTime() > MaxTimeMsec) break;
+        if (timer.getTime() > MaxTimeMsec) {
+            printf("Timeout Straight Most Fast\n");
+            break;
+        }
     }
 }
 
@@ -122,7 +128,10 @@ void PIDStraightSlow(float target, int MaxTimeMsec) {
         chassis.Move();
         wait(5, msec);
         timer.click();
-        if (timer.getTime() > MaxTimeMsec) break;
+        if (timer.getTime() > MaxTimeMsec) {
+            printf("Timeout Straight Slow\n");
+            break;
+        }
     }
 }
 
@@ -151,7 +160,6 @@ void PIDRotateSlow(float deg, int MaxTimeMsec) {
     pidRot.refresh();
     timer.reset();
 
-    Inertial.resetRotation();
     while (true) {
         float now = Inertial.rotation(rotationUnits::deg);
         pidRot.update(now);
@@ -167,7 +175,10 @@ void PIDRotateSlow(float deg, int MaxTimeMsec) {
         chassis.Move();
         wait(5, msec);
         timer.click();
-        if (timer.getTime() > MaxTimeMsec) break;
+        if (timer.getTime() > MaxTimeMsec) {
+            printf("Timeout Rotate Slow\n");
+            break;
+        }
     }
 }
 
@@ -190,7 +201,6 @@ void PIDRotateFast(float deg, int MaxTimeMsec) {
     pidRot.refresh();
     timer.reset();
 
-    Inertial.resetRotation();
     while (true) {
         float now = Inertial.rotation(rotationUnits::deg);
         pidRot.update(now);
@@ -206,7 +216,10 @@ void PIDRotateFast(float deg, int MaxTimeMsec) {
         chassis.Move();
         wait(5, msec);
         timer.click();
-        if (timer.getTime() > MaxTimeMsec) break;
+        if (timer.getTime() > MaxTimeMsec) {
+            printf("Timeout Rotate Fast");
+            break;
+        }
     }
 }
 

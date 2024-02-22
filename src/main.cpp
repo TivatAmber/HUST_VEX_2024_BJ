@@ -27,11 +27,11 @@ int main() {
     // Initializing Robot Configuration. DO NOT REMOVE!
     vexcodeInit();
     #ifdef TO_AUTO
-    // Rotate.changed(count_task);
+    Rotate.changed(count_task);
     autonomous_task();
     #endif
-    // thread controller_thread(My_Controller);
-    // chassis.Move_forward(0);
+    thread controller_thread(My_Controller);
+    chassis.Move_forward(0);
     while (true)
     {
         this_thread::sleep_for(10);
