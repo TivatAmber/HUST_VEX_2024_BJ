@@ -12,6 +12,7 @@
 
 using namespace vex;
 float speed_ratio = 0.6;//·ÀÖ¹Ò¡¸Ð¹ýÓÚÁéÃô
+float rotate_ratio = 0.25;
 double speed = 30.0;
 
 void controller_task(){
@@ -20,7 +21,7 @@ void controller_task(){
     else if(Controller.ButtonLeft.pressing()){chassis.Move_left(speed);}
     else if(Controller.ButtonRight.pressing()){chassis.Move_right(speed);}
     else if(abs(Controller.Axis1.position())>=10 || abs(Controller.Axis3.position())>=10)
-    {chassis.Move_free(Controller.Axis3.position()*speed_ratio,Controller.Axis1.position()*speed_ratio);}
+    {chassis.Move_free(Controller.Axis3.position()*speed_ratio,Controller.Axis1.position()*rotate_ratio);}
     else if(chassis.stop_Monitor()){chassis.Move_stop();}
     chassis.Move();
     if(Controller.ButtonR1.PRESSED){unfold1.to_unfold();}
